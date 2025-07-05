@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "http://*",
+      "destination": "https://:splat",
+      "permanent": true
+    }
+  ]
+}
