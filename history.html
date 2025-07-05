@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f7f7f7;
+        }
+        header {
+            width: 100%;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .welcome-message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            text-align: center;
+            max-width: 80%;
+        }
+        .question-page {
+            display: none;
+            text-align: center;
+            margin-top: 50px;
+            max-width: 800px;
+            width: 90%;
+        }
+        #question-text {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .answer-text {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .button {
+            padding: 12px 25px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .progress-bar {
+            width: 80%;
+            height: 10px;
+            background-color: #f0f0f0;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .progress-bar-filled {
+            height: 100%;
+            background-color: #4caf50;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.5rem;
+            }
+            .button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.2rem;
+            }
+            .button {
+                font-size: 0.8rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background music -->
+    <audio id="background-music" loop>
+        <source src="quiz-evaluation-loop-thinking-time-231582.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <header>
+        History Quiz
+    </header>
+    <div class="welcome-message"> Welcome to the History Quiz! </div>
+    <div id="question-page" class="question-page">
+        <h1 id="question-text">Question</h1>
+        <p id="answer-text" class="answer-text">Answer</p>
+        <div class="button-container">
+            <button class="button" id="next-button" onclick="nextQuestion()">Next</button>
+            <button class="button" id="reveal-button" onclick="revealAnswer()">Reveal Answer</button>
+            <button class="button" id="back-button" onclick="goBack()">Back to Home</button>
+        </div>
+        <div class="progress-bar">
+            <div id="progress-bar-filled" class="progress-bar-filled"></div>
+        </div>
+    </div>
+    <button class="button" id="start-quiz" onclick="startQuiz()">Start Quiz</button>
+
+<script>
+const questions = [
+    "Who was the first emperor of China?", 
+    "Which event marked the beginning of World War II?", 
+    "What was the primary cause of the American Civil War?", 
+    "Which ancient civilization built the Machu Picchu?", 
+    "Who was the first woman to fly solo across the Atlantic Ocean?", 
+    "In what year did the Titanic sink?", 
+    "What was the name of the ship that carried the Pilgrims to America in 1620?", 
+    "Which famous battle was fought on June 18, 1815?", 
+    "What was the name of the first manned spacecraft to land on the moon?", 
+    "Who was the leader of the Soviet Union during World War II?", 
+    "Which country was the first to grant women the right to vote?", 
+    "Who was the first president of the United States?", 
+    "In what year did the Berlin Wall fall?", 
+    "Which civilization is known for creating the first written language?", 
+    "Which historical figure is known for conquering the largest empire in history?", 
+    "What was the significance of the Magna Carta?"
+];
+
+const answers = [
+    "Qin Shi Huang", 
+    "Invasion of Poland", 
+    "Slavery and states' rights", 
+    "Inca Empire", 
+    "Amelia Earhart", 
+    "1912", 
+    "The Mayflower", 
+    "Battle of Waterloo", 
+    "Apollo 11", 
+    "Joseph Stalin", 
+    "New Zealand", 
+    "George Washington", 
+    "1989", 
+    "Sumerians", 
+    "Alexander the Great", 
+    "It limited the power of the king and laid the foundation for constitutional law."
+];
+
+
+let currentQuestionIndex = 0;
+
+const startQuizButton = document.getElementById('start-quiz');
+const questionPage = document.getElementById('question-page');
+const questionText = document.getElementById('question-text');
+const answerText = document.getElementById('answer-text');
+const nextButton = document.getElementById('next-button');
+const revealButton = document.getElementById('reveal-button');
+const backButton = document.getElementById('back-button');
+const progressBarFilled = document.getElementById('progress-bar-filled');
+
+function startQuiz() {
+    startQuizButton.style.display = 'none'; // Hide start button
+    questionPage.style.display = 'block'; // Show quiz page
+    loadQuestion(); // Load the first question
+    updateProgressBar();
+}
+
+function loadQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+        alert('You have completed the quiz!');
+        goBack();
+        return;
+    }
+    questionText.textContent = questions[currentQuestionIndex];
+    answerText.style.display = 'none';
+    
+    // Read the question aloud
+    speakText(`Question: ${questions[currentQuestionIndex]}`);
+}
+
+function revealAnswer() {
+    answerText.textContent = answers[currentQuestionIndex];
+    answerText.style.display = 'block';
+    
+    // Read the answer aloud
+    speakText(`Answer: ${answers[currentQuestionIndex]}`);
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    loadQuestion();
+    updateProgressBar();
+}
+
+function goBack() {
+    startQuizButton.style.display = 'block';
+    questionPage.style.display = 'none';
+    currentQuestionIndex = 0;
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    progressBarFilled.style.width = `${progress}%`;
+}
+
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+    } else {
+        alert('Text-to-speech is not supported in this browser.');
+    }
+}
+
+// Set background music volume (low volume)
+const music = document.getElementById('background-music');
+music.volume = 0.2; // Set volume to 20% of the maximum
+
+// Play music immediately when the page loads
+window.onload = function() {
+    music.play();
+}
+</script>
+</body>
+</html>

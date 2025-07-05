@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marshall Jacob - Full Stack Engineer CV</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fb; color: #333; padding: 20px;
+    }
+    .container {
+      max-width: 1100px; margin: auto; background: white;
+      padding: 30px; border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; margin-bottom: 30px;
+    }
+    .profile-img {
+      width: 120px; height: 120px; border-radius: 50%;
+      object-fit: cover; border: 3px solid #114b8a;
+    }
+    .title {
+      flex: 1; margin-left: 20px;
+    }
+    .title h1 { font-size: 2.5em; color: #114b8a; }
+    .title p { font-size: 1.1em; color: #555; margin-top: 5px; }
+
+    section { margin-bottom: 40px; }
+    section h2 {
+      font-size: 1.8em; color: #114b8a; border-bottom: 2px solid #ddd;
+      padding-bottom: 6px; margin-bottom: 20px;
+    }
+    ul { list-style: none; padding-left: 0; }
+    ul li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul li::before {
+      content: '✔'; color: #3498db;
+      position: absolute; left: 0;
+    }
+
+    .experience ul li strong, .education ul li strong {
+      display: block; font-size: 1.1em; color: #2c3e50;
+    }
+    .contact-info a {
+      color: #114b8a; text-decoration: none;
+      font-weight: bold;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; }
+    }
+    footer {
+      text-align: center; color: #888; font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <img src="images.jpeg" alt="Marshall Jacob" class="profile-img">
+    <div class="title">
+      <h1>Marshall Jacob</h1>
+      <p>Full Stack Developer | Backend & Frontend Expert | 7+ Years Experience</p>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section>
+    <h2>About Me</h2>
+    <p>
+      Innovative and detail-oriented Full Stack Developer with 7+ years of experience building scalable web apps, APIs, and cloud-based systems.
+      Proficient in backend services and frontend architecture. Passionate about clean code, intuitive design, and DevOps automation.
+    </p>
+  </section>
+
+  <!-- Core Skills -->
+  <section class="skills">
+    <h2>Core Technical Skills</h2>
+    <div class="grid-2">
+      <ul>
+        <li>JavaScript, TypeScript, HTML5, CSS3, Tailwind, Bootstrap</li>
+        <li>React, Vue, Angular, jQuery</li>
+        <li>Responsive Design (mobile-first, media queries)</li>
+        <li>RESTful APIs, GraphQL</li>
+        <li>Firebase, MongoDB, PostgreSQL, MySQL</li>
+      </ul>
+      <ul>
+        <li>Node.js, Express.js, PHP, Python (Flask/Django)</li>
+        <li>Docker, GitHub Actions, CI/CD</li>
+        <li>Google Cloud, Firebase, Netlify, Vercel, AWS (EC2, S3)</li>
+        <li>Authentication (JWT, OAuth2, Firebase Auth)</li>
+        <li>Agile, Scrum, Jira, Trello, Slack</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience">
+    <h2>Professional Experience</h2>
+    <ul>
+      <li><strong>Lead Full Stack Developer | TechNova Solutions (2020 - Present)</strong>
+        <ul>
+          <li>Designed and deployed multi-tenant SaaS platforms using React, Node.js & Firebase.</li>
+          <li>Optimized API performance by 40% using async processing and database indexing.</li>
+          <li>Led migration from monolithic app to microservices architecture.</li>
+        </ul>
+      </li>
+      <li><strong>Frontend Engineer | DevSpark Labs (2017 - 2020)</strong>
+        <ul>
+          <li>Built responsive UI components with React & Vue; improved usability scores by 30%.</li>
+          <li>Collaborated on CI/CD pipelines with Docker and GitHub Actions.</li>
+          <li>Integrated real-time chat and notification system with Firebase Realtime DB.</li>
+        </ul>
+      </li>
+      <li><strong>Junior Backend Developer | CodeLogic (2015 - 2017)</strong>
+        <ul>
+          <li>Created scalable APIs using Express.js and MongoDB for client projects.</li>
+          <li>Maintained PHP-based CMS systems and optimized database queries.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section class="education">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>B.Sc. (Ed) Mathematics</strong> – University of Abuja, 2012</li>
+      <li><strong>NCE Mathematics/Physics</strong> – College of Education, 2006</li>
+    </ul>
+  </section>
+
+  <!-- Certifications -->
+  <section class="certifications">
+    <h2>Professional Certifications</h2>
+    <ul>
+      <li>Google IT Automation with Python (Coursera)</li>
+      <li>Firebase Web App Developer (Google Cloud)</li>
+      <li>Microsoft Certified: Azure Developer Associate</li>
+      <li>FreeCodeCamp Full Stack Web Dev</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-info">
+    <h2>Contact Information</h2>
+    <ul>
+      <li>Email: <a href="mailto:marshall12340@gmail.com">marshall12340@gmail.com</a></li>
+      <li>Phone: +234 810 234 1648</li>
+      <li>Portfolio: <a href="https://mathcloud.store" target="_blank">mathcloud.store</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/marshalljacob" target="_blank">linkedin.com/in/marshalljacob</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2024 Marshall Jacob. All Rights Reserved.
+</footer>
+</body>
+</html>

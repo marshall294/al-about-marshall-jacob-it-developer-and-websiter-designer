@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Our Services | MathCloud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #114b8a;
+      --accent: #007bff;
+      --bg: #f2f6fa;
+      --text: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin: 40px 20px 20px;
+      font-size: 2.4em;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .thumbnail-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 30px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .thumbnail {
+      perspective: 1000px;
+      text-align: center;
+      height: 280px;
+    }
+
+    .thumbnail-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+    }
+
+    .thumbnail:hover .thumbnail-inner {
+      transform: rotateY(180deg);
+    }
+
+    .thumbnail-front, .thumbnail-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1em;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .thumbnail-front {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      text-transform: uppercase;
+    }
+
+    .thumbnail-back {
+      transform: rotateY(180deg);
+      background-color: #fff;
+      padding: 0;
+    }
+
+    .thumbnail-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #222;
+      font-size: 0.95em;
+    }
+
+    .explore-btn {
+      margin-top: 5px;
+      padding: 8px 16px;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9em;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .explore-btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      width: 100%;
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.7em;
+        margin: 30px 15px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Explore Our Professional Services</h1>
+
+  <div class="thumbnail-container">
+    <!-- Service 1 -->
+    <div class="thumbnail">
+      <div class="thumbnail-inner">
+        <div class="thumbnail-front">Math & Physics Tutoring</div>
+        <div class="thumbnail-back">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTlIsklZ1QG9Xqcr0C7S0UuqQzwEphB1cVRw&s" alt="Math Physics Tutoring">
+        </div>
+      </div>
+      <div class="caption">Math & Physics Tutoring</div>
+      <a href="m&p.html" class="explore-btn">Explore</a>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="thumbnail">
+      <div class="thumbnail-inner">
+        <div class="thumbnail-front">Football Scouting</div>
+        <div class="thumbnail-back">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4CvyyEq7mOcPjBrtDdigo8BvqzMMhQilrrg&s" alt="Football Scouting">
+        </div>
+      </div>
+      <div class="caption">Football Scouting</div>
+      <a href="https://mathcloud-sports.vercel.app/" class="explore-btn">Explore</a>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="thumbnail">
+      <div class="thumbnail-inner">
+        <div class="thumbnail-front">Web Design & ICT</div>
+        <div class="thumbnail-back">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8hT0Du3QupJqm2y30_wOG4NCUyJgFJ1RU1w&s" alt="Web Design & ICT">
+        </div>
+      </div>
+      <div class="caption">Web Design & ICT Training</div>
+      <a href="https://school-manager-website-complete-e-l.vercel.app/login.html" class="explore-btn">Explore</a>
+    </div>
+
+    <!-- Service 4 -->
+    <div class="thumbnail">
+      <div class="thumbnail-inner">
+        <div class="thumbnail-front">Online Business</div>
+        <div class="thumbnail-back">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_h2jmff7USBFzlK7tCVhw6e0YkQHaGjQxMA&s" alt="Online Business">
+        </div>
+      </div>
+      <div class="caption">Online Business Strategy</div>
+      <a href="online-business.html" class="explore-btn">Explore</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 MathCloud. All Rights Reserved.</p>
+    <p>
+      <a href="https://facebook.com" target="_blank">Facebook</a> |
+      <a href="https://twitter.com" target="_blank">Twitter</a> |
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </p>
+    <p>Contact: <a href="mailto:marshall12340@gmail.com">marshall12340@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
