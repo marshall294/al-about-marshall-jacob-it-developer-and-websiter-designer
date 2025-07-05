@@ -1,9 +1,8 @@
 {
-  "cleanUrls": true,
   "redirects": [
     {
-      "source": "http://*",
-      "destination": "https://:splat",
+      "source": "/",
+      "destination": "/index.html",
       "permanent": true
     }
   ]
